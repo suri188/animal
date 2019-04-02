@@ -51,6 +51,7 @@ export default {
         height: 1.04rem;
         border-top: 1px solid #ccc;
         background: #fff;
+        z-index: 10;
         ul{
             display: flex;
             justify-content: space-around;

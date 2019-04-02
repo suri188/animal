@@ -341,11 +341,20 @@
     
 </template>
 <script>
-import {getHome} from '../../api/api.js'
+import Vuex from 'vuex';
 export default {
-    async created(){
-        let data = await getHome();
-        console.log(data)
+    created(){
+        this.gethomeList();
+    },
+    computed:{
+        ...Vuex.mapState({
+            list:state=>state.home.homeList            
+        })
+    },
+    methods: {
+        ...Vuex.mapActions({
+            gethomeList:"home/getActionsHomeList"
+        })
     },
     data(){
         return{
