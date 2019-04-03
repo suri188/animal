@@ -318,12 +318,12 @@
         </div>
         <div class="shopList">
             <ul class="listUl">
-                <li class="listLi">
+                <li class="listLi" v-for="item in list">
                     <div class="listShop">
                         <a href="">
-                            <img src="https://img1.epetbar.com/2017-02/27/12/83932a2c8cd7e5b5e83ee0c3ca829bbd.jpg?x-oss-process=style/fill&$1=200&$2=200" alt="">
-                            <p>新西兰原装进口ZEAL 宠物零食 小牛肋骨 125g </p>
-                            <span>￥70.00</span>
+                            <img :src="item.good_image.img_url" alt="">
+                            <p>{{item.subject}}</p>
+                            <span>￥{{item.sale_price}}</span>
                         </a>
                         <div class="car">
                             <a href="">
@@ -745,7 +745,6 @@ export default {
             height: 4.94rem;
             margin-bottom: .5rem;
             padding: 0 .2rem;
-            background: pink;
             img{
                 width: 100%;
                 height: 100%;

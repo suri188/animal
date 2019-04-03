@@ -1,28 +1,36 @@
-import {getHome} from '../../api/api';
+import {getHome}from '../../api/api'; 
 export default {
-    state:{
-        homeList:[],
-        homeLists:[]
-    },
-    mutations:{
-        getMutationHomeList(state,params){
-            //params.splice(0,3)
-            //console.log(params)
-             let con  = []
-            let arr = con.push(params);
-            console.log(arr.splice(0,3))
-            
-           
-            // state.homeLists.push (state.homeList)
-             //console.log( state.homeList)
+    state: {
+        homeList:[]
+    }, 
+    mutations: {
+        getMutationHomeList(state, params) {
+            var arr = []; 
+                   
+           for (var key in params) {
+                if (params[key].index >= 3776000) {
+                    arr.push(params[key].data.goods)
+                }
+            }
+             //console.log(arr)
+             for (var i = 0; i < arr.length; i++) {
+               var res = arr[i]; 
+               //console.log(res)
+               for (var j = 0; j < res.length; j++) {
+                   //console.log(res[j])
+                    state.homeList.push(res[j])
+               }
+             }
+             console.log(state.homeList)
         }
-    },
-    actions:{
-        async getActionsHomeList({commit},params){
-            let data = await getHome(params);
-            //console.log(typeof data.data);
-           commit("getMutationHomeList",data.data)
+    }, 
+    actions: {
+        async getActionsHomeList( {commit}) {
+            let data = await getHome(); 
+            //console.log(data.data) 
+                            
+            commit("getMutationHomeList", data.data)
         }
-    },
-    namespaced: true
+    }, 
+    namespaced:true
 }
